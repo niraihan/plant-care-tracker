@@ -1,3 +1,5 @@
+import useTitle from "../../hook/useTitle";
+
 const beginnerPlants = [
     {
         id: 1,
@@ -23,6 +25,7 @@ const beginnerPlants = [
 ];
 
 const BeginnerPlants = () => {
+    useTitle("Plants - BeginnerPlants");
     return (
         <section className="py-12 px-4 bg-white">
             <div className="max-w-6xl mx-auto">

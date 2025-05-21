@@ -4,8 +4,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast"; 
 import { AuthContext } from "../../providers/AuthProvider";
+import useTitle from "../../hook/useTitle";
 
 const AddPlant = () => {
+  useTitle("Plants - Add Plant");
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 

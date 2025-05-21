@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import useTitle from "../../hook/useTitle";
 
 const NewPlants = () => {
+    useTitle("Plants - NewPlants");
     const [plants, setPlants] = useState([]);
     const [loading, setLoading] = useState(true);
 

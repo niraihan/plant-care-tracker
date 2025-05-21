@@ -3,11 +3,12 @@ import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-// import useTitle from '../hooks/useTitle';
+
 import { FcGoogle } from "react-icons/fc";
+import useTitle from '../hook/useTitle';
 
 const Register = () => {
-    // useTitle("JobTrack - Register");
+    useTitle("Plants - Register");
 
 
     const { createUser, updateUserProfile, googleLogin } = useContext(AuthContext);
@@ -47,7 +48,7 @@ const Register = () => {
     };
 
     return (
-        <div className="hero min-h-screen bg-cover bg-center rounded-2xl" style={{backgroundImage:"url('/reg3.avif')"}}>
+        <div className="hero min-h-screen bg-cover bg-center rounded-2xl" style={{ backgroundImage: "url('/reg3.avif')" }}>
             <div className="card w-full max-w-sm shadow-2xl bg-blue-200">
                 <h2 className="text-center text-2xl font-bold mt-6">Register</h2>
                 <form onSubmit={handleRegister} className="card-body">
@@ -61,7 +62,7 @@ const Register = () => {
                 </form>
                 <div className="text-center mb-2">
                     <button onClick={handleGoogleRegister} className="btn btn-outline btn-sm">
-                    <FcGoogle size={20} /> Register with Google
+                        <FcGoogle size={20} /> Register with Google
                     </button>
                 </div>
                 <p className="text-center text-[12px] mb-4">

@@ -1,6 +1,8 @@
 import { FaTint, FaSun, FaLeaf } from "react-icons/fa";
+import useTitle from "../../hook/useTitle";
 
 const TopMistakes = () => {
+  useTitle("Plants - TopMistakes");
   const mistakes = [
     {
       icon: <FaTint className="text-4xl text-green-700" />,

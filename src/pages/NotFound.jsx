@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
+import useTitle from "../hook/useTitle";
 
 const NotFound = () => {
+  useTitle("Plants - Not Found");
   return (
     <div className="flex flex-col items-center justify-center h-screen text-center bg-green-50 px-4">
       <img
