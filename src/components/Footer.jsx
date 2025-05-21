@@ -1,3 +1,6 @@
+import { FaFacebook, FaGithub, FaTwitter, } from "react-icons/fa";
+import { FaInstagramSquare } from "react-icons/fa";
+
 const Footer = () => {
     return (
         <footer className="bg-green-100 text-green-800 mt-10">
@@ -17,17 +20,17 @@ const Footer = () => {
                 <div>
                     <h3 className="text-xl font-semibold mb-2">Follow Us</h3>
                     <div className="flex gap-4 text-2xl">
-                        <a href="https://facebook.com" target="_blank" rel="noreferrer" className="hover:text-blue-600">
-                            <i className="fa-brands fa-facebook"></i>
+                        <a href="https://www.facebook.com" target="_blank" rel="noreferrer" className="hover:text-blue-600">
+                            <i className="fa-brands fa-facebook"><FaFacebook /></i>
                         </a>
-                        <a href="https://instagram.com" target="_blank" rel="noreferrer" className="hover:text-pink-600">
-                            <i className="fa-brands fa-instagram"></i>
+                        <a href="https://www.instagram.com" target="_blank" rel="noreferrer" className="hover:text-pink-600">
+                            <i className="fa-brands fa-instagram"><FaInstagramSquare /></i>
                         </a>
                         <a href="https://twitter.com" target="_blank" rel="noreferrer" className="hover:text-sky-500">
-                            <i className="fa-brands fa-twitter"></i>
+                            <i className="fa-brands fa-twitter"><FaTwitter /></i>
                         </a>
                         <a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-gray-800">
-                            <i className="fa-brands fa-github"></i>
+                            <i className="fa-brands fa-github"><FaGithub /></i>
                         </a>
                     </div>
                 </div>
