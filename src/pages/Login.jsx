@@ -4,9 +4,10 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 // import useTitle from "../hooks/useTitle";
 import { FcGoogle } from "react-icons/fc";
+import useTitle from "../hook/useTitle";
 
 const Login = () => {
-//   useTitle("JobTrack - Login");
+  useTitle("Plants - Login");
   const { loginUser, googleLogin } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
