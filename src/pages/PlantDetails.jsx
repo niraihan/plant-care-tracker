@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import useTitle from "../hook/useTitle";
 
 const PlantDetails = () => {
-    useTitle("Plants - PlantDetails");
+    // useTitle("Plants - PlantDetails");
     const { id } = useParams();
     const [plant, setPlant] = useState(null);
     const [loading, setLoading] = useState(true);
