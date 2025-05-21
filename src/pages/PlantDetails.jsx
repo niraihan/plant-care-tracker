@@ -1,10 +1,32 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import useTitle from "../hook/useTitle";
 
 const PlantDetails = () => {
+    useTitle("Plants - PlantDetails");
     const { id } = useParams();
     const [plant, setPlant] = useState(null);
     const [loading, setLoading] = useState(true);
+    // ডাইনামিক টাইটেল এর জন্য এই হুক সেট টাইটেল মনে রাখতে হবে
+
+    const setTitle = useTitle();
+    useEffect(() => {
+        fetch("http://localhost:5000/plants")
+            .then(res => res.json())
+            .then(data => {
+                const matchedPlant = data.find(c => c._id === id);
+                setPlant(matchedPlant);
+                // ডাইনামিক করার জন্য নিচের এই কোড লিখেছি
+                if (matchedPlant) {
+                    setTitle(`${matchedPlant.name} | Plants`);
+                } else {
+                    setTitle(`Name Not Found | Plants`);
+                }
+
+            });
+    }, [id, setTitle]);
+    // --------------------
+
 
     useEffect(() => {
         const fetchPlant = async () => {

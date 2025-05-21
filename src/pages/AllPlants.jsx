@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import LoadingSpinner from "../components/LoadingSpinner";
 import axios from "axios";
+import useTitle from "../hook/useTitle";
 
 const AllPlants = () => {
+    useTitle("Plants - AllPlants");
     const [plants, setPlants] = useState([]);
     const [loading, setLoading] = useState(true);
     const [sortBy, setSortBy] = useState("");

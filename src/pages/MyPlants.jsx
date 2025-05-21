@@ -5,8 +5,10 @@ import { Link } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../providers/AuthProvider";
 import Swal from "sweetalert2";
+import useTitle from "../hook/useTitle";
 
 const MyPlants = () => {
+    useTitle("Plants - MyPlants");
     const { user } = useContext(AuthContext);
     const [myPlants, setMyPlants] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -38,7 +40,7 @@ const MyPlants = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                
+
                 axios.delete(`http://localhost:5000/plants/${id}`)
                     .then(() => {
                         setMyPlants(prev => prev.filter(p => p._id !== id));

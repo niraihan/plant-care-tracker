@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
+import useTitle from "../hook/useTitle";
 
 const UpdatePlant = () => {
+  useTitle("Plants - UpdatePlant");
+
   const { id } = useParams();
   const navigate = useNavigate();
   const [plant, setPlant] = useState(null);
