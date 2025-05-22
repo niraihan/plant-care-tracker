@@ -14,8 +14,8 @@ const Navbar = () => {
             <li><NavLink className={({ isActive }) => (isActive ? 'border-b-2 border-indigo-600 text-red-500' : '')} to="/all-plants">All Plants</NavLink></li>
             {user && (
                 <>
-                    <li><NavLink to="/add-plant">Add Plant</NavLink></li>
-                    <li><NavLink to="/my-plants">My Plants</NavLink></li>
+                    <li><NavLink className={({ isActive }) => (isActive ? 'border-b-2 border-indigo-600 text-red-500' : '')} to="/add-plant">Add Plant</NavLink></li>
+                    <li><NavLink className={({ isActive }) => (isActive ? 'border-b-2 border-indigo-600 text-red-500' : '')} to="/my-plants">My Plants</NavLink></li>
                 </>
             )}
         </>
@@ -30,13 +30,13 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-center hidden lg:flex">
-                
+
                 <ul className="menu menu-horizontal px-1">{navLinks}</ul>
             </div>
 
             <div className="navbar-end">
                 <div className="mr-2">
-                <ThemeToggle></ThemeToggle>
+                    <ThemeToggle></ThemeToggle>
                 </div>
                 {!user ? (
                     <>
