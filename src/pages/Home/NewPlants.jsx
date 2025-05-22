@@ -10,7 +10,7 @@ const NewPlants = () => {
 
     // Fetch latest plants from backend
     useEffect(() => {
-        axios.get("http://localhost:5000/new-plants")
+        axios.get("https://assignment10-server-wheat.vercel.app/new-plants")
             .then((res) => {
                 setPlants(res.data);
                 setLoading(false);

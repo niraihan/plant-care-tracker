@@ -16,7 +16,7 @@ const MyPlants = () => {
     // fetch user's plants
     useEffect(() => {
         if (user?.email) {
-            axios.get(`http://localhost:5000/plants?email=${user.email}`)
+            axios.get(`https://assignment10-server-wheat.vercel.app/plants?email=${user.email}`)
                 .then(res => {
                     setMyPlants(res.data);
                     setLoading(false);
@@ -41,7 +41,7 @@ const MyPlants = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                axios.delete(`http://localhost:5000/plants/${id}`)
+                axios.delete(`https://assignment10-server-wheat.vercel.app/plants/${id}`)
                     .then(() => {
                         setMyPlants(prev => prev.filter(p => p._id !== id));
                         Swal.fire({

@@ -42,7 +42,7 @@ const AddPlant = () => {
     };
 
     try {
-      await axios.post("http://localhost:5000/plants", plantData); // Backend API Call
+      await axios.post("https://assignment10-server-wheat.vercel.app/plants", plantData); // Backend API Call
       toast.success("Plant added successfully!"); // 
       navigate("/my-plants"); 
     } catch (error) {

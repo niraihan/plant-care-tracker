@@ -11,7 +11,7 @@ const PlantDetails = () => {
 
     const setTitle = useTitle();
     useEffect(() => {
-        fetch("http://localhost:5000/plants")
+        fetch("https://assignment10-server-wheat.vercel.app/plants")
             .then(res => res.json())
             .then(data => {
                 const matchedPlant = data.find(c => c._id === id);
@@ -32,7 +32,7 @@ const PlantDetails = () => {
         const fetchPlant = async () => {
             try {
                 setLoading(true);
-                const res = await fetch(`http://localhost:5000/plants/${id}`);
+                const res = await fetch(`https://assignment10-server-wheat.vercel.app/plants/${id}`);
                 const data = await res.json();
                 setPlant(data);
             } catch (err) {

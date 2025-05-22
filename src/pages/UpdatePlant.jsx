@@ -14,7 +14,7 @@ const UpdatePlant = () => {
   // 1️⃣ Load plant data from backend
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/plants/${id}`)
+      .get(`https://assignment10-server-wheat.vercel.app/plants/${id}`)
       .then(res => {
         setPlant(res.data);
       })
@@ -41,7 +41,7 @@ const UpdatePlant = () => {
     };
 
     try {
-      await axios.put(`http://localhost:5000/plants/${id}`, updatedPlant);
+      await axios.put(`https://assignment10-server-wheat.vercel.app/plants/${id}`, updatedPlant);
 
       Swal.fire({
         icon: "success",

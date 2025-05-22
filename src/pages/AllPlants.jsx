@@ -14,7 +14,7 @@ const AllPlants = () => {
         const fetchPlants = async () => {
             try {
                 setLoading(true);
-                const res = await axios.get("http://localhost:5000/plants");
+                const res = await axios.get("https://assignment10-server-wheat.vercel.app/plants");
                 setPlants(res.data);
             } catch (error) {
                 console.error("Error fetching plants:", error);
