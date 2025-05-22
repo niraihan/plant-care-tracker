@@ -10,8 +10,8 @@ const Navbar = () => {
 
     const navLinks = (
         <>
-            <li><NavLink to="/">Home</NavLink></li>
-            <li><NavLink to="/all-plants">All Plants</NavLink></li>
+            <li><NavLink className={({ isActive }) => (isActive ? 'border-b-2 border-indigo-600 text-red-500' : '')} to="/">Home</NavLink></li>
+            <li><NavLink className={({ isActive }) => (isActive ? 'border-b-2 border-indigo-600 text-red-500' : '')} to="/all-plants">All Plants</NavLink></li>
             {user && (
                 <>
                     <li><NavLink to="/add-plant">Add Plant</NavLink></li>
@@ -52,7 +52,7 @@ const Navbar = () => {
                             data-tooltip-id="user-tooltip"
                             data-tooltip-content={user.displayName}
                         />
-                        
+
                         <Tooltip id="user-tooltip" />
                         <button
                             onClick={logOut}
