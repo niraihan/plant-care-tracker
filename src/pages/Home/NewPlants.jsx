@@ -33,7 +33,7 @@ const NewPlants = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
                 {plants.map((plant) => {
-                    
+
                     const daysLeft = plant.nextWateringDate
                         ? differenceInDays(new Date(plant.nextWateringDate), new Date())
                         : null;
@@ -52,11 +52,18 @@ const NewPlants = () => {
                                 <p className="text-sm text-gray-600 mb-2">Category: {plant.category}</p>
                                 <p className="text-sm">{plant.description}</p>
 
-                                {/* ✅ Alert Message */}
-                                {daysLeft !== null && (
-                                    <p className={daysLeft <= 0 ? "text-red-600 font-bold" : "text-green-600"}>
-                                        {daysLeft <= 0 ? "⚠️ Water now!" : `💧 Next watering in: ${daysLeft} days`}
-                                    </p>
+                                {/* Alert Message dasiui... */}
+
+                                {daysLeft !== null ? (
+                                    <div
+                                        className={`badge px-4 py-2 text-sm font-semibold 
+                                                    ${daysLeft <= 0 ? "badge-error text-white animate-pulse"
+                                                : "badge-success text-white"}`}
+                                    >
+                                        {daysLeft <= 0 ? "⚠️ Water now!" : `💧 In ${daysLeft} day${daysLeft > 1 ? "s" : ""}`}
+                                    </div>
+                                ) : (
+                                    <div className="badge badge-ghost text-gray-500 italic">No date</div>
                                 )}
 
                                 <div className="card-actions justify-end mt-4">
