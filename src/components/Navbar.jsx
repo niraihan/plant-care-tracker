@@ -52,6 +52,7 @@ const Navbar = () => {
                             data-tooltip-id="user-tooltip"
                             data-tooltip-content={user.displayName}
                         />
+                        
                         <Tooltip id="user-tooltip" />
                         <button
                             onClick={logOut}
