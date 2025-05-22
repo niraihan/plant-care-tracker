@@ -37,7 +37,7 @@ const Footer = () => {
             </div>
 
             <div className="text-center bg-green-200 py-3 text-sm">
-                &copy; {new Date().getFullYear()} Plant Care Tracker. All rights reserved.
+                &copy; {new Date().getFullYear()} Plant Care Tracker. All rights reserved. <span className="text-green-300"> Create by NI Raihan</span>
             </div>
         </footer>
     );

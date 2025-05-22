@@ -97,6 +97,9 @@ const AddPlant = () => {
             <option value="succulent">Succulent</option>
             <option value="fern">Fern</option>
             <option value="flowering">Flowering</option>
+            <option value="Purifier">Air Purifier</option>
+            <option value="Tropical">Tropical</option>
+            <option value="Bonsai">Bonsai</option>
           </select>
         </div>
 
@@ -124,6 +127,7 @@ const AddPlant = () => {
             <option value="easy">Easy</option>
             <option value="moderate">Moderate</option>
             <option value="difficult">Difficult</option>
+            <option value="Advanced">Advanced</option>
           </select>
         </div>
 

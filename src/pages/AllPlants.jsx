@@ -37,15 +37,18 @@ const AllPlants = () => {
     });
 
     return (
-        <div className="max-w-6xl mx-auto px-4 py-10">
+        <div className="max-w-7xl mx-auto px-4 py-10">
             <h2 className="text-3xl font-bold text-green-700 mb-6 text-center">
                 🌿 All Plants
             </h2>
 
             {/* Sort Options */}
-            <div className="mb-4 flex justify-end gap-3">
+            <div className="mb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div className="text-sm text-gray-500">
+                    Showing {sortedPlants.length} plant{sortedPlants.length !== 1 && "s"}
+                </div>
                 <select
-                    className="select select-sm select-bordered"
+                    className="select select-sm select-bordered w-full sm:w-auto"
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
                 >
@@ -58,9 +61,9 @@ const AllPlants = () => {
             {loading ? (
                 <LoadingSpinner />
             ) : (
-                <div className="overflow-x-auto">
-                    <table className="table table-zebra">
-                        <thead className="bg-green-100 text-green-700">
+                <div className="overflow-x-auto rounded-lg border border-base-300">
+                    <table className="table table-zebra w-full text-sm">
+                        <thead className="bg-green-100 text-green-700 text-base">
                             <tr>
                                 <th>Plant Name</th>
                                 <th>Category</th>
@@ -73,14 +76,17 @@ const AllPlants = () => {
                         <tbody>
                             {sortedPlants.map((plant) => (
                                 <tr key={plant._id}>
-                                    <td>{plant.name}</td>
-                                    <td>{plant.category}</td>
-                                    <td>{plant.careLevel}</td>
-                                    <td>{plant.wateringFrequency}</td>
-                                    <td>{plant.nextWateringDate}</td>
+                                    <td className="whitespace-nowrap">{plant.name}</td>
+                                    <td className="whitespace-nowrap">{plant.category}</td>
+                                    <td className="whitespace-nowrap">{plant.careLevel}</td>
+                                    <td className="whitespace-nowrap">{plant.wateringFrequency}</td>
+                                    <td className="whitespace-nowrap">{plant.nextWateringDate}</td>
                                     <td>
-                                        <Link to={`/plants/${plant._id}`} className="btn btn-xs btn-outline btn-success">
-                                            View Details
+                                        <Link
+                                            to={`/plants/${plant._id}`}
+                                            className="btn btn-xs btn-outline btn-success"
+                                        >
+                                            View
                                         </Link>
                                     </td>
                                 </tr>

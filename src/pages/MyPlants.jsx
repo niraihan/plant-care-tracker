@@ -13,7 +13,6 @@ const MyPlants = () => {
     const [myPlants, setMyPlants] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    // fetch user's plants
     useEffect(() => {
         if (user?.email) {
             axios
@@ -29,7 +28,6 @@ const MyPlants = () => {
         }
     }, [user]);
 
-    // delete plant
     const handleDelete = (id) => {
         Swal.fire({
             title: "Are you sure?",
@@ -45,11 +43,7 @@ const MyPlants = () => {
                     .delete(`https://assignment10-server-wheat.vercel.app/plants/${id}`)
                     .then(() => {
                         setMyPlants((prev) => prev.filter((p) => p._id !== id));
-                        Swal.fire({
-                            title: "Deleted!",
-                            text: "Your plant has been deleted.",
-                            icon: "success",
-                        });
+                        Swal.fire("Deleted!", "Your plant has been deleted.", "success");
                     })
                     .catch(() => {
                         toast.error("Delete failed");
@@ -63,67 +57,122 @@ const MyPlants = () => {
     return (
         <div className="max-w-6xl mx-auto px-4 py-8">
             <h2 className="text-3xl font-bold mb-6 text-center">My Plants</h2>
+
             {myPlants.length === 0 ? (
                 <p className="text-center text-gray-500">You haven't added any plants yet.</p>
             ) : (
-                <div className="overflow-x-auto">
-                    <table className="table table-zebra w-full">
-                        <thead>
-                            <tr>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Category</th>
-                                <th>Watering Frequency</th>
-                                <th>Next Watering</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {myPlants.map((plant) => {
-                                const daysLeft = plant.nextWateringDate
-                                    ? differenceInDays(new Date(plant.nextWateringDate), new Date())
-                                    : null;
+                <>
+                    {/* 🌐 Desktop Table View */}
+                    <div className="overflow-x-auto hidden md:block">
+                        <table className="table table-zebra w-full">
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Watering Frequency</th>
+                                    <th>Next Watering</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {myPlants.map((plant) => {
+                                    const daysLeft = plant.nextWateringDate
+                                        ? differenceInDays(new Date(plant.nextWateringDate), new Date())
+                                        : null;
 
-                                return (
-                                    <tr key={plant._id}>
-                                        <td>
-                                            <img src={plant.image} alt={plant.name} className="w-16 h-16 rounded" />
-                                        </td>
-                                        <td>{plant.name}</td>
-                                        <td>{plant.category}</td>
-                                        <td>{plant.wateringFrequency}</td>
+                                    return (
+                                        <tr key={plant._id}>
+                                            <td>
+                                                <img src={plant.image} alt={plant.name} className="w-16 h-16 rounded" />
+                                            </td>
+                                            <td>{plant.name}</td>
+                                            <td>{plant.category}</td>
+                                            <td>{plant.wateringFrequency}</td>
+                                            <td>
+                                                {daysLeft !== null ? (
+                                                    <div
+                                                        className={`badge px-4 py-2 text-sm font-semibold 
+                                                            ${daysLeft <= 0
+                                                                ? "badge-error text-white animate-pulse"
+                                                                : "badge-success text-white"
+                                                            }`}
+                                                    >
+                                                        {daysLeft <= 0
+                                                            ? "⚠️ Water now!"
+                                                            : `💧 In ${daysLeft} day${daysLeft > 1 ? "s" : ""}`}
+                                                    </div>
+                                                ) : (
+                                                    <div className="badge badge-ghost text-gray-500 italic">No date</div>
+                                                )}
+                                            </td>
+                                            <td className="space-x-2">
+                                                <Link to={`/update/${plant._id}`} className="btn btn-sm btn-info">
+                                                    Update
+                                                </Link>
+                                                <button onClick={() => handleDelete(plant._id)} className="btn btn-sm btn-error">
+                                                    Delete
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    );
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
 
+                    {/* 📱 Mobile Card View */}
+                    <div className="grid grid-cols-1 gap-4 md:hidden">
+                        {myPlants.map((plant) => {
+                            const daysLeft = plant.nextWateringDate
+                                ? differenceInDays(new Date(plant.nextWateringDate), new Date())
+                                : null;
 
-                                        <td>
+                            return (
+                                <div key={plant._id} className="card bg-base-100 shadow-md border border-green-200">
+                                    <div className="card-body">
+                                        <div className="flex items-center gap-4 mb-2">
+                                            <img src={plant.image} alt={plant.name} className="w-20 h-20 rounded object-cover" />
+                                            <div>
+                                                <h3 className="text-xl font-bold">{plant.name}</h3>
+                                                <p className="text-sm text-gray-600">{plant.category}</p>
+                                            </div>
+                                        </div>
+
+                                        <p><span className="font-semibold">Watering:</span> {plant.wateringFrequency}</p>
+                                        <p>
+                                            <span className="font-semibold">Next Watering:</span>{" "}
                                             {daysLeft !== null ? (
-                                                <div
-                                                    className={`badge px-4 py-2 text-sm font-semibold 
-                                                    ${daysLeft <= 0 ? "badge-error text-white animate-pulse"
-                                                            : "badge-success text-white"}`}
+                                                <span
+                                                    className={`badge px-3 py-1 font-semibold 
+                                                        ${daysLeft <= 0
+                                                            ? "badge-error text-white animate-pulse"
+                                                            : "badge-success text-white"
+                                                        }`}
                                                 >
-                                                    {daysLeft <= 0 ? "⚠️ Water now!" : `💧 In ${daysLeft} day${daysLeft > 1 ? "s" : ""}`}
-                                                </div>
+                                                    {daysLeft <= 0
+                                                        ? "⚠️ Water now!"
+                                                        : `💧 In ${daysLeft} day${daysLeft > 1 ? "s" : ""}`}
+                                                </span>
                                             ) : (
-                                                <div className="badge badge-ghost text-gray-500 italic">No date</div>
+                                                <span className="text-gray-400 italic">No date</span>
                                             )}
-                                        </td>
+                                        </p>
 
-
-
-                                        <td className="space-x-2">
-                                            <Link to={`/update/${plant._id}`} className="btn btn-sm btn-info">
+                                        <div className="mt-3 flex gap-2">
+                                            <Link to={`/update/${plant._id}`} className="btn btn-sm btn-info flex-1">
                                                 Update
                                             </Link>
-                                            <button onClick={() => handleDelete(plant._id)} className="btn btn-sm btn-error">
+                                            <button onClick={() => handleDelete(plant._id)} className="btn btn-sm btn-error flex-1">
                                                 Delete
                                             </button>
-                                        </td>
-                                    </tr>
-                                );
-                            })}
-                        </tbody>
-                    </table>
-                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+                </>
             )}
         </div>
     );
