@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { Tooltip } from "react-tooltip";
 import { AuthContext } from "../providers/AuthProvider";
+import ThemeToggle from "./ThemeToggle";
 
 
 const Navbar = () => {
@@ -29,10 +30,14 @@ const Navbar = () => {
             </div>
 
             <div className="navbar-center hidden lg:flex">
+                
                 <ul className="menu menu-horizontal px-1">{navLinks}</ul>
             </div>
 
             <div className="navbar-end">
+                <div className="mr-2">
+                <ThemeToggle></ThemeToggle>
+                </div>
                 {!user ? (
                     <>
                         <Link to="/login" className="btn btn-outline btn-sm mr-2">Login</Link>
