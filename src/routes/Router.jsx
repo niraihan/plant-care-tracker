@@ -17,6 +17,7 @@ import MainLayout from "../layout/MainLayout";
 import MyPlants from "../pages/MyPlants";
 import AddPlant from "../pages/Home/Addplant";
 import PlantDetails from "../pages/PlantDetails";
+import MyProfile from "../pages/myProfile/MyProfile";
 
 export  const router = createBrowserRouter([
     {
@@ -70,6 +71,14 @@ export  const router = createBrowserRouter([
                 element: (
                     <PrivateRoute>
                         <UpdatePlant />
+                    </PrivateRoute>
+                ),
+            },
+            {
+                path: "/my-profile",
+                element: (
+                    <PrivateRoute>
+                        <MyProfile></MyProfile>
                     </PrivateRoute>
                 ),
             },
