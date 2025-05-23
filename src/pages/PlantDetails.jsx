@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useTitle from "../hook/useTitle";
 
+
 const PlantDetails = () => {
     // useTitle("Plants - PlantDetails");
     const { id } = useParams();

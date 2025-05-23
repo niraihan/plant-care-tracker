@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { differenceInDays } from "date-fns";
 import useTitle from "../../hook/useTitle";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 const NewPlants = () => {
     useTitle("Plants - NewPlants");
@@ -22,7 +23,7 @@ const NewPlants = () => {
     }, []);
 
     if (loading) {
-        return <div className="text-center mt-10">Loading new plants...</div>;
+        return <div className="text-center mt-10"> <LoadingSpinner />Loading new plants...</div>;
     }
 
     return (

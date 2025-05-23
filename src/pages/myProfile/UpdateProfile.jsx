@@ -19,6 +19,7 @@ const UpdateProfile = () => {
     const form = e.target;
     const name = form.name.value;
     const photo = form.photo.value;
+    // const number = form.number.value;
 
     updateUserProfile(name, photo)
       .then(() => {
@@ -49,6 +50,13 @@ const UpdateProfile = () => {
           placeholder="Photo URL"
           className="input input-bordered w-full"
         />
+        {/* <input
+          type="text"
+          name="number"
+          defaultValue={user?.number}
+          placeholder="Number"
+          className="input input-bordered w-full"
+        /> */}
         <button type="submit" className="btn btn-primary w-full">
           Update Information
         </button>
