@@ -67,9 +67,9 @@ const Navbar = () => {
                                 <Tooltip id="user-tooltip" />
                             </div>
                         </label>
-                        <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-amber-200 rounded-box w-52">
-                            <li><Link to="/my-profile"><span className="font-bold text-red-400">My Profile</span></Link></li>
-                            <li><button onClick={logOut}><span className="font-bold text-red-700">LogOut</span></button></li>
+                        <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-sm dropdown-content bg-green-400 rounded-box w-52">
+                            <li><Link to="/my-profile"><span className="font-bold text-black">My Profile</span></Link></li>
+                            <li><button onClick={logOut}><span className="font-bold text-black">LogOut</span></button></li>
                         </ul>
                     </div>
                 )}
