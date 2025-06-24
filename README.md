@@ -66,6 +66,6 @@ A full-stack web application that helps users track and manage the care of their
 
 
 ✍️ Author
-Developed with ❤️ by [NI RAIHAN]
+Developed with ❤️ by [Nurul Islam Rayhan]
 
 
