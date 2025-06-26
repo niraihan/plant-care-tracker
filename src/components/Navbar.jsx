@@ -95,7 +95,7 @@ const Navbar = () => {
     );
 
     return (
-        <div className="bg-green-100 dark:bg-gray-900 shadow sticky top-0 z-50">
+        <div className="bg-green-100 dark:bg-gray-900 shadow mb-8 sticky top-0 z-50">
             <div className="navbar max-w-7xl mx-auto px-4">
                 {/* Navbar Start */}
                 <div className="navbar-start">
