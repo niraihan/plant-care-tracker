@@ -31,7 +31,7 @@ const NewPlants = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-center text-green-700 mb-8">
                 🌿 New Arrivals
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
 
                 {plants.map((plant) => {
 
@@ -51,7 +51,13 @@ const NewPlants = () => {
                             <div className="card-body">
                                 <h2 className="card-title text-green-700">{plant.name}</h2>
                                 <p className="text-sm text-gray-600 mb-2">Category: {plant.category}</p>
-                                <p className="text-sm">{plant.description}</p>
+                                {/* <p className="text-sm">{plant.description?.slice(0, 80)}...</p> */}
+                                <p className="text-sm text-gray-700">
+                                    {plant.description.length > 80
+                                        ? `${plant.description.slice(0, 80)}...`
+                                        : plant.description}
+                                </p>
+
 
                                 {/* Alert Message dasiui... */}
 

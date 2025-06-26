@@ -19,8 +19,14 @@ import AddPlant from "../pages/Home/Addplant";
 import PlantDetails from "../pages/PlantDetails";
 import MyProfile from "../pages/myProfile/MyProfile";
 import UpdateProfile from "../pages/myProfile/UpdateProfile";
+import AboutPage from "../pages/AboutPage";
+import ContactPage from "../pages/ContactPage";
+import SupportPage from "../pages/SupportPage";
+import CategoryPlants from "../pages/Home/CategoryPlants";
+import DashboardLayout from "../pages/Dashboard/DashboardLayout";
+import NewsletterSubscribers from "../pages/Dashboard/NewsletterSubscribers";
 
-export  const router = createBrowserRouter([
+export const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout></MainLayout>,
@@ -29,6 +35,18 @@ export  const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>
+            },
+            {
+                path: "/about",
+                element: <AboutPage></AboutPage>,
+            },
+            {
+                path: "/contact",
+                element: <ContactPage />,
+            },
+            {
+                path: "/support",
+                element: <SupportPage />,
             },
             {
                 path: "/login",
@@ -42,29 +60,62 @@ export  const router = createBrowserRouter([
                 path: "/all-plants",
                 element: <AllPlants />
             },
+            {
+                path: "/category/:name",
+                element: <CategoryPlants />
+            },
+            {
+                path: "/dashboard",
+                element: (
+                    <PrivateRoute>
+                        <DashboardLayout />
+                    </PrivateRoute>
+                ),
+                children: [
+                    {
+                        index: true, // 🟢 this makes AddPlant the default page
+                        element: <AddPlant />
+                    },
+                    {
+                        path: "newsletter",
+                        element: <NewsletterSubscribers />,
+                    },
+                    {
+                        path: "add-plant",
+                        element: <AddPlant />
+                    },
+                    {
+                        path: "my-plants",
+                        element: <MyPlants />
+                    },
+                    // অন্য ড্যাশবোর্ড সাবপেজ এখানে যোগ করতে পারো
+                ],
+            },
 
-            {
-                path: "/add-plant",
-                element: (
-                    <PrivateRoute>
-                        <AddPlant></AddPlant>
-                    </PrivateRoute>
-                ),
-            },
-            {
-                path: "/my-plants",
-                element: (
-                    <PrivateRoute>
-                       <MyPlants></MyPlants>
-                    </PrivateRoute>
-                ),
-            },
+            // {
+            //     path: "/add-plant",
+            //     element: (
+            //         <PrivateRoute>
+            //             <AddPlant></AddPlant>
+            //         </PrivateRoute>
+            //     ),
+            // },
+            // {
+            //     path: "/my-plants",
+            //     element: (
+            //         <PrivateRoute>
+            //             <MyPlants></MyPlants>
+            //         </PrivateRoute>
+            //     ),
+            // },
             {
                 path: "/plants/:id",
                 element: (
-                    <PrivateRoute>
                         <PlantDetails></PlantDetails>
-                    </PrivateRoute>
+                    // <PrivateRoute>
+
+                    // </PrivateRoute>
+
                 ),
             },
             {
@@ -87,7 +138,7 @@ export  const router = createBrowserRouter([
                 path: "/update-profile",
                 element: (
                     <PrivateRoute>
-                      <UpdateProfile></UpdateProfile>
+                        <UpdateProfile></UpdateProfile>
                     </PrivateRoute>
                 ),
             },

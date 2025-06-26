@@ -49,7 +49,7 @@ const UpdatePlant = () => {
         text: "Your plant has been updated successfully.",
       });
 
-      navigate("/my-plants");
+      navigate("/dashboard/my-plants");
     } catch (error) {
       console.error("Error updating plant:", error);
       Swal.fire({
@@ -77,83 +77,129 @@ const UpdatePlant = () => {
       </h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input
-            name="image"
-            defaultValue={plant.image}
-            className="input input-bordered w-full"
-            placeholder="Image URL"
-            required
-          />
-          <input
-            name="name"
-            defaultValue={plant.name}
-            className="input input-bordered w-full"
-            placeholder="Plant Name"
-            required
-          />
-          <select
-            name="category"
-            defaultValue={plant.category}
-            className="select select-bordered w-full"
-          >
-            <option>Succulent</option>
-            <option>Fern</option>
-            <option>Vine</option>
-            <option>Flowering</option>
-            <option>Other</option>
-          </select>
-          <select
-            name="careLevel"
-            defaultValue={plant.careLevel}
-            className="select select-bordered w-full"
-          >
-            <option>Easy</option>
-            <option>Moderate</option>
-            <option>Difficult</option>
-          </select>
-          <input
-            name="wateringFrequency"
-            defaultValue={plant.wateringFrequency}
-            className="input input-bordered w-full"
-            placeholder="Watering Frequency"
-            required
-          />
-          <input
-            name="lastWateredDate"
-            type="date"
-            defaultValue={plant.lastWateredDate}
-            className="input input-bordered w-full"
-            required
-          />
-          <input
-            name="nextWateringDate"
-            type="date"
-            defaultValue={plant.nextWateringDate}
-            className="input input-bordered w-full"
-            required
-          />
-          <input
-            name="healthStatus"
-            defaultValue={plant.healthStatus}
-            className="input input-bordered w-full"
-            placeholder="Health Status"
-            required
-          />
+
+          {/* Image URL */}
+          <div>
+            <label className="label">Image URL</label>
+            <input
+              name="image"
+              defaultValue={plant.image}
+              className="input input-bordered w-full"
+              placeholder="Image URL"
+              required
+            />
+          </div>
+
+          {/* Plant Name */}
+          <div>
+            <label className="label">Plant Name</label>
+            <input
+              name="name"
+              defaultValue={plant.name}
+              className="input input-bordered w-full"
+              placeholder="Plant Name"
+              required
+            />
+          </div>
+
+          {/* Category */}
+          <div>
+            <label className="label">Category</label>
+            <select
+              name="category"
+              defaultValue={plant.category}
+              className="select select-bordered w-full"
+            >
+              <option>Succulent</option>
+              <option>Fern</option>
+              <option>Vine</option>
+              <option>Flowering</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          {/* Care Level */}
+          <div>
+            <label className="label">Care Level</label>
+            <select
+              name="careLevel"
+              defaultValue={plant.careLevel}
+              className="select select-bordered w-full"
+            >
+              <option>Easy</option>
+              <option>Moderate</option>
+              <option>Difficult</option>
+            </select>
+          </div>
+
+          {/* Watering Frequency */}
+          <div>
+            <label className="label">Watering Frequency</label>
+            <input
+              name="wateringFrequency"
+              defaultValue={plant.wateringFrequency}
+              className="input input-bordered w-full"
+              placeholder="e.g., every 3 days"
+              required
+            />
+          </div>
+
+          {/* Last Watered Date */}
+          <div>
+            <label className="label">Last Watered Date</label>
+            <input
+              name="lastWateredDate"
+              type="date"
+              defaultValue={plant.lastWateredDate}
+              className="input input-bordered w-full"
+              required
+            />
+          </div>
+
+          {/* Next Watering Date */}
+          <div>
+            <label className="label">Next Watering Date</label>
+            <input
+              name="nextWateringDate"
+              type="date"
+              defaultValue={plant.nextWateringDate}
+              className="input input-bordered w-full"
+              required
+            />
+          </div>
+
+          {/* Health Status */}
+          <div>
+            <label className="label">Health Status</label>
+            <input
+              name="healthStatus"
+              defaultValue={plant.healthStatus}
+              className="input input-bordered w-full"
+              placeholder="e.g., Healthy / Needs Attention"
+              required
+            />
+          </div>
         </div>
-        <textarea
-          name="description"
-          defaultValue={plant.description}
-          className="textarea textarea-bordered w-full"
-          rows="3"
-          placeholder="Description"
-          required
-        ></textarea>
-        {/* <Link to={`/my-plants`} >
-        </Link> */}
+
+        {/* Description */}
+        <div>
+          <label className="label">Description</label>
+          <textarea
+            name="description"
+            defaultValue={plant.description}
+            className="textarea textarea-bordered w-full"
+            rows="3"
+            placeholder="Write something about this plant"
+            required
+          ></textarea>
+        </div>
+
+        {/* Submit Button */}
         <button type="submit" className="btn btn-success w-full">
           Update Plant
         </button>
       </form>
+
     </div>
   );
 };

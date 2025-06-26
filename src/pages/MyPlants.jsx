@@ -52,11 +52,11 @@ const MyPlants = () => {
         });
     };
 
-    if (loading) return <div className="text-center mt-10">Loading...</div>;
+    if (loading) return <div className="text-center  text-green-700 dark:text-green-300 mt-10">Loading...</div>;
 
     return (
-        <div className="max-w-6xl mx-auto px-4 py-8">
-            <h2 className="text-3xl font-bold mb-6 text-center">My Plants</h2>
+        <div className="max-w-6xl mx-auto  text-green-700 dark:text-green-300 px-4 py-8">
+            <h2 className="text-3xl font-bold  text-green-700 dark:text-green-300 mb-6 text-center">My Plants</h2>
 
             {myPlants.length === 0 ? (
                 <p className="text-center text-gray-500">You haven't added any plants yet.</p>
@@ -66,7 +66,7 @@ const MyPlants = () => {
                     <div className="overflow-x-auto hidden md:block">
                         <table className="table table-zebra w-full">
                             <thead>
-                                <tr>
+                                <tr className=" text-green-700 dark:text-green-300">
                                     <th>Image</th>
                                     <th>Name</th>
                                     <th>Category</th>
